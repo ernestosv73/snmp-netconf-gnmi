@@ -43,9 +43,9 @@ topology:
           - chmod +x /root/snmp.sh
           - bash /root/snmp.sh    
 
-    #netconf:
-      #kind: linux
-      #image: hellt/netconf-console:latest
+    netconf:
+      kind: linux
+      image: esanchezv/kali-python3:latest
     
     traffic-gen:
       kind: linux
@@ -63,7 +63,7 @@ topology:
       mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500  
-    #- endpoints: ["netconf:eth1", "srlswitch:e1-6"]
-      #mtu: 1500  
+    - endpoints: ["netconf:eth1", "srlswitch:e1-6"]
+      mtu: 1500  
      
      
