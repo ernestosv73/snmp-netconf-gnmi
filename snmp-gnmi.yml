@@ -36,7 +36,7 @@ topology:
       kind: linux
       image: esanchezv/kali-python3:latest
       binds:
-        - configs/snmp.sh:/root/snmp.sh
+        - configs/snmp-netconf.sh:/root/snmp-netconf.sh
       exec:
          #- mkdir /data
          #- chmod +x /data
