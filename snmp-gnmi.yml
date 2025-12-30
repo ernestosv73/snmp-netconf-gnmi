@@ -32,9 +32,9 @@ topology:
       image: docker.io/arthurk99/cisco-iol:17.15.01 
       startup-config: configs/config.partial  
            
-    gNMIc:
+    gNMIc-snmp:
       kind: linux
-      image: esanchezv/hellt-gnmic:latest
+      image: esanchezv/kali-python3:latest
       binds:
         - configs/snmp.sh:/root/snmp.sh
       exec:
@@ -43,10 +43,6 @@ topology:
           - chmod +x /root/snmp.sh
           - bash /root/snmp.sh    
 
-    netconf:
-      kind: linux
-      image: esanchezv/kali-python3:latest
-    
     traffic-gen:
       kind: linux
       image: esanchezv/kali-iperf3:latest
@@ -59,11 +55,10 @@ topology:
       mtu: 1500
     - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
       mtu: 1500
-    - endpoints: ["gNMIc:eth1", "srlswitch:e1-4"]
+    - endpoints: ["gNMIc-snmp:eth1", "srlswitch:e1-4"]
       mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500  
-    - endpoints: ["netconf:eth1", "srlswitch:e1-6"]
-      mtu: 1500  
+    
      
      
