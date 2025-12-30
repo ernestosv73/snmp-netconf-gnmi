@@ -1,0 +1,7 @@
+system view
+interface Ethernet 1/0/0
+ipv6 enable
+ipv6 address 2001:db8:10::12/64
+undo shutdown
+commit
+quit
