@@ -3,5 +3,10 @@ interface Ethernet 1/0/0
 ipv6 enable
 ipv6 address 2001:db8:10::12/64
 undo shutdown
+quit
+snetconf server enable
+netconf
+protocol inbound ssh ipv4 port 830
+quit
 commit
 quit
