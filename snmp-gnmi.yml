@@ -28,6 +28,7 @@ topology:
 
     cisco-router:
       kind: cisco_iol
+      mgmt-ipv4: 172.100.100.5
       image: docker.io/arthurk99/cisco-iol:17.15.01 
       startup-config: configs/config.partial  
            
