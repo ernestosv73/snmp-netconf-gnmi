@@ -1,0 +1,63 @@
+name: comparativa
+
+mgmt:
+  network: snmp-gnmi
+  ipv4-subnet: 172.80.80.0/24  
+  
+topology:
+  nodes:
+    # Nokia SRL Linux Layer 2 Device
+    srlswitch:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:24.10.1
+      type: ixrd3
+      startup-config: configs/srlswitch.cfg
+            
+    # Nokia SRL Linux Router
+    srlrouter:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:24.10.1
+      type: ixrd3
+      startup-config: configs/srlrouter.cfg
+      
+    huawei-router:
+      kind: huawei_vrp
+      mgmt-ipv4: 172.80.80.7
+      image: vrnetlab/huawei_vrp:ne40e-8.180
+      startup-config: configs/myconfig.txt      
+
+    cisco-router:
+      kind: cisco_iol
+      image: docker.io/arthurk99/cisco-iol:17.15.01 
+      startup-config: configs/config.partial  
+           
+    gNMIc:
+      kind: linux
+      image: esanchezv/hellt-gnmic:latest
+      binds:
+        - configs/python_scapy.sh:/root/python_scapy.sh
+      exec:
+         - mkdir /data
+         - chmod +x /data
+         - chmod +x /root/python_scapy.sh
+         - bash /root/python_scapy.sh    
+
+    traffic-gen:
+      kind: linux
+      image: docker.io/esanchezv/kaliipv6v2.2:latest
+            
+    
+  links:
+    - endpoints: ["srlrouter:e1-1", "srlswitch:e1-1"]
+      mtu: 1500
+    - endpoints: ["huawei-router:eth1", "srlswitch:e1-2"]
+      mtu: 1500
+    - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
+      mtu: 1500
+    - endpoints: ["gNMIc:eth1", "srlswitch:e1-4"]
+      mtu: 1500
+    - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
+      mtu: 1500  
+    
+     
+     
