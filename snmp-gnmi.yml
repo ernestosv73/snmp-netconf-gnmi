@@ -44,7 +44,7 @@ topology:
 
     traffic-gen:
       kind: linux
-      image: docker.io/esanchezv/kaliipv6v2.2:latest
+      image: esanchezv/kali-iperf3:latest
             
     
   links:
