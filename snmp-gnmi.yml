@@ -38,9 +38,10 @@ topology:
       binds:
         - configs/snmp-netconf.sh:/root/snmp-netconf.sh
         - configs/test-netconf.py:/root/test-netconf.py
+        - configs/gnmic-config.yml:/root/gnmic-config.yml
       exec:
-         #- mkdir /data
-         #- chmod +x /data
+          - mkdir /data
+          - chmod +x /data
           - python3 -m pip config set global.break-system-packages true
           - chmod +x /root/snmp-netconf.sh
           - bash /root/snmp-netconf.sh    
