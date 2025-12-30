@@ -41,8 +41,8 @@ topology:
          #- mkdir /data
          #- chmod +x /data
           - python3 -m pip config set global.break-system-packages true
-          - chmod +x /root/snmp.sh
-          - bash /root/snmp.sh    
+          - chmod +x /root/snmp-netconf.sh
+          - bash /root/snmp-netconf.sh    
 
     traffic-gen:
       kind: linux
