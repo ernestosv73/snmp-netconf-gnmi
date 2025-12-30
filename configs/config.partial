@@ -1,0 +1,5 @@
+conf t
+interface Ethernet 0/1
+ipv6 address 2001:db8:10::11/64
+no shut
+exit
