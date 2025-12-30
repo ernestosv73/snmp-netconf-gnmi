@@ -4,6 +4,5 @@ ipv6 address 2001:db8:10::11/64
 no shut
 exit
 snmp-server community public ro
-snmp-server enable traps
 exit
 
