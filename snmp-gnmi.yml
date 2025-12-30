@@ -34,13 +34,13 @@ topology:
     gNMIc:
       kind: linux
       image: esanchezv/hellt-gnmic:latest
-      #binds:
-        #- configs/python_scapy.sh:/root/python_scapy.sh
-      #exec:
+      binds:
+        - configs/snmp.sh:/root/snmp.sh
+      exec:
          #- mkdir /data
          #- chmod +x /data
-         #- chmod +x /root/python_scapy.sh
-         #- bash /root/python_scapy.sh    
+          - chmod +x /root/snmp.sh
+          - bash /root/snmp.sh    
 
     traffic-gen:
       kind: linux
