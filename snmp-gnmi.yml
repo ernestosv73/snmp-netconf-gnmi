@@ -2,7 +2,7 @@ name: comparativa
 
 mgmt:
   network: snmp-gnmi
-  ipv4-subnet: 172.80.80.0/24  
+  ipv4-subnet: 172.100.100.0/24  
   
 topology:
   nodes:
@@ -22,7 +22,7 @@ topology:
       
     huawei-router:
       kind: huawei_vrp
-      mgmt-ipv4: 172.80.80.7
+      mgmt-ipv4: 172.100.100.7
       image: vrnetlab/huawei_vrp:ne40e-8.180
       #startup-config: configs/myconfig.txt      
 
