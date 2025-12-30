@@ -4,5 +4,5 @@ pip install ncclient
 sleep 1
 bash -c "$(curl -sL https://get-gnmic.openconfig.net)"
 sleep 1
-apt install snmp -y 
+apt install snmp snmp-mibs-downloader -y 
 sleep 1
