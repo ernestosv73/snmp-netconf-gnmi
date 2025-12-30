@@ -1,4 +1,4 @@
-apt install curl
+apt install curl -y
 sleep 1
 pip install ncclient
 sleep 1
