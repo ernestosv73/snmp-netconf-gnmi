@@ -40,6 +40,7 @@ topology:
       exec:
          #- mkdir /data
          #- chmod +x /data
+          - python3 -m pip config set global.break-system-packages true
           - chmod +x /root/snmp.sh
           - bash /root/snmp.sh    
 
