@@ -15,8 +15,8 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
     paths:
-      - /interface[name=ethernet-1/*]/statistics
-      - /interface[name=ethernet-1/*]/traffic-rate
+      - /interface[name=ethernet-1/1]/statistics
+      - /interface[name=ethernet-1/1]/traffic-rate
 
 outputs:
   file_output:
