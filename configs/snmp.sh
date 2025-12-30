@@ -14,6 +14,8 @@ apk add python3-dev
 sleep 1
 apk add build-base
 sleep 1
+apk add py3-wheel
+sleep 1
 pip install easysnmp
 sleep 1
 
