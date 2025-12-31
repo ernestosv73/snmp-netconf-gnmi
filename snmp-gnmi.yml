@@ -32,17 +32,17 @@ topology:
       image: docker.io/arthurk99/cisco-iol:17.15.01 
       startup-config: configs/config.partial  
 
-    gNMIc:
-      kind: linux
-      image: esanchezv/hellt-gnmic:latest
-      binds:  
-        - configs/snmp.sh:/root/snmp.sh
-      exec:
+    #gNMIc:
+      #kind: linux
+      #image: esanchezv/hellt-gnmic:latest
+      #binds:  
+        #- configs/snmp.sh:/root/snmp.sh
+      #exec:
           #- mkdir /data
           #- chmod +x /data
           #- python3 -m pip config set global.break-system-packages true
-          - chmod +x /root/snmp.sh
-          - bash /root/snmp.sh      
+          #- chmod +x /root/snmp.sh
+          #- bash /root/snmp.sh      
            
     gNMIc-snmp:
       kind: linux
@@ -61,6 +61,10 @@ topology:
     traffic-gen:
       kind: linux
       image: esanchezv/kali-iperf3:latest
+
+    alpine:
+      kind: linux
+      image: dockette/alpine:3.21
             
     
   links:
@@ -74,7 +78,7 @@ topology:
       mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500  
-    - endpoints: ["gNMIc:eth1", "srlswitch:e1-6"]
+    - endpoints: ["alpine:eth1", "srlswitch:e1-6"]
       mtu: 1500  
       
     
