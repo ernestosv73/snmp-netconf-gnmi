@@ -44,19 +44,19 @@ topology:
           #- chmod +x /root/snmp.sh
           #- bash /root/snmp.sh      
            
-    gNMIc-snmp:
-      kind: linux
-      image: esanchezv/kali-python3:latest
-      binds:
-        - configs/snmp-netconf.sh:/root/snmp-netconf.sh
-        - configs/test-netconf.py:/root/test-netconf.py
-        - configs/gnmic-config.yml:/root/gnmic-config.yml
-      exec:
-          - mkdir /data
-          - chmod +x /data
-          - python3 -m pip config set global.break-system-packages true
-          - chmod +x /root/snmp-netconf.sh
-          - bash /root/snmp-netconf.sh    
+    #gNMIc-snmp:
+      #kind: linux
+      #image: esanchezv/kali-python3:latest
+      #binds:
+        #- configs/snmp-netconf.sh:/root/snmp-netconf.sh
+        #- configs/test-netconf.py:/root/test-netconf.py
+        #- configs/gnmic-config.yml:/root/gnmic-config.yml
+      #exec:
+          #- mkdir /data
+          #- chmod +x /data
+          #- python3 -m pip config set global.break-system-packages true
+          #- chmod +x /root/snmp-netconf.sh
+          #- bash /root/snmp-netconf.sh    
 
     traffic-gen:
       kind: linux
@@ -74,8 +74,8 @@ topology:
       mtu: 1500
     - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
       mtu: 1500
-    - endpoints: ["gNMIc-snmp:eth1", "srlswitch:e1-4"]
-      mtu: 1500
+    #- endpoints: ["gNMIc-snmp:eth1", "srlswitch:e1-4"]
+      #mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500  
     - endpoints: ["alpine:eth1", "srlswitch:e1-6"]
