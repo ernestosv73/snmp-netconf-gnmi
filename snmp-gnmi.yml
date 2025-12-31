@@ -50,6 +50,8 @@ topology:
     traffic-gen:
       kind: linux
       image: esanchezv/kali-iperf3:latest
+      exec:
+         - ip -6 addr add 2001:db8:10::100/64 dev eth1
 
     alpine:
       kind: linux
