@@ -20,3 +20,7 @@ pip install ncclient
 sleep 1
 apk add --no-cache nano
 sleep 1
+apk add --no-cache curl
+sleep 1
+apk add --no-cache git
+sleep 1
