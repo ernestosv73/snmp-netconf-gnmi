@@ -18,3 +18,5 @@ apk add --no-cache openssh-client
 sleep 1
 pip install ncclient
 sleep 1
+apk add --no-cache nano
+sleep 1
