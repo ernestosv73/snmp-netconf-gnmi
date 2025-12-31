@@ -64,7 +64,7 @@ topology:
 
     alpine:
       kind: linux
-      image: dockette/alpine:3.21
+      image: alpine:latest
             
     
   links:
