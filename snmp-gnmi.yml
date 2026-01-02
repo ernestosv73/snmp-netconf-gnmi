@@ -24,7 +24,7 @@ topology:
       kind: arista_veos
       mgmt-ipv4: 172.100.100.7
       image: vrnetlab/arista_veos:4.35.1F
-      #startup-config: configs/myconfig.txt      
+      startup-config: configs/myconfig.txt      
 
     cisco-router:
       kind: cisco_iol
