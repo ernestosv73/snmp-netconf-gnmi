@@ -18,7 +18,7 @@ topology:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux:24.10.1
       type: ixrd3
-      tartup-config: configs/srlrouter.cfg
+      startup-config: configs/srlrouter.cfg
       
     arista-router:
       kind: arista_veos
