@@ -19,7 +19,7 @@ from easysnmp import Session, EasySNMPError
 TARGET = '172.100.100.5'
 COMMUNITY = 'public'
 POLL_INTERVAL = 5  # segundos
-OUTPUT_FILE = 'if-stats-snmp.json'
+OUTPUT_FILE = '/data/if-stats-snmp.json'
 
 INTERFACE_NAME = "Ethernet0/1"
 INTERFACE_INDEX = 2  # confirmado experimentalmente
