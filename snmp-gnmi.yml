@@ -62,6 +62,7 @@ topology:
          - configs/if-stats-snmp-full.py:/root/if-stats-snmp-full.py
          - configs/if-stats-netconf-v2.py:/root/if-stats-netconf-v2.py
          - configs/if-stats-snmp-v2.py:/root/if-stats-snmp-v2.py
+         - configs/if-stats-snmp-v3.py:/root/if-stats-snmp-v3.py
          - configs/gnmic-config.yml:/root/gnmic-config.yml
       exec:
          - mkdir /data
