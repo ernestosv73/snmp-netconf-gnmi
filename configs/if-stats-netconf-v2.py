@@ -20,7 +20,7 @@ PASS = "admin"
 
 INTERFACE_NAME = "Ethernet1"
 POLL_INTERVAL = 5
-OUTPUT_FILE = "if-stats-netconf-arista.json"
+OUTPUT_FILE = "/data/if-stats-netconf-arista.json"
 
 
 class AristaNETCONFMonitor:
