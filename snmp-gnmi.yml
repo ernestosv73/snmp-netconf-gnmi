@@ -58,7 +58,8 @@ topology:
       image: esanchezv/alpine-python3:latest
       binds:
          - configs/snmp.sh:/root/snmp.sh
-         - configs/test-netconf.py:/root/test-netconf.py
+         - configs/if-stats-netconf.py:/root/if-stats-netconf.py
+         - configs/if-stats-snmp-full.py:/root/if-stats-snmp-full.py
          - configs/gnmic-config.yml:/root/gnmic-config.yml
       exec:
          - mkdir /data
