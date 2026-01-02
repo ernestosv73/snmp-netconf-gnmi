@@ -6,8 +6,8 @@ encoding: json_ietf
 timeout: 10s
 
 targets:
-  srlswitch:
-    address: srlswitch:57400
+  srlrouter:
+    address: srlrouter:57400
     
 subscriptions:    
   srl-if-stats:
@@ -21,6 +21,6 @@ subscriptions:
 outputs:
   file_output:
     type: file
-    filename: /data/if-stats.json
+    filename: /data/if-stats-nokia.json
     format: json
     split-events: true      
