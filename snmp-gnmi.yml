@@ -93,6 +93,7 @@ topology:
       mtu: 1500
     - endpoints: ["arista-router:eth2", "srlswitch2:e1-2"]
       mtu: 1500  
+    - endpoints: ["srlrouter:e1-2", "srlswitch2:e1-1"]  
     - endpoints: ["alpine:eth1", "srlswitch2:e1-5"]
       mtu: 1500  
       
