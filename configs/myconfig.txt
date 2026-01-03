@@ -5,5 +5,11 @@ no switchport
 ipv6 enable
 ipv6 address 2001:db8:10::12/64
 no shutdown
+exit
+interface ethernet 2
+no switchport
+ipv6 enable
+ipv6 address 2001:db8:20::12/64
+no shutdown
 write
 exit
