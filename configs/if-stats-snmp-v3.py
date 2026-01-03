@@ -21,8 +21,8 @@ COMMUNITY = 'public'
 POLL_INTERVAL = 5  # segundos
 OUTPUT_FILE = '/data/if-stats-snmp.json'
 
-INTERFACE_NAME = "Ethernet0/1"
-INTERFACE_INDEX = 2  # ifIndex confirmado
+INTERFACE_NAME = "Ethernet0/2"
+INTERFACE_INDEX = 3  # ifIndex confirmado
 
 # ============================================================
 # Clase Monitor SNMP
