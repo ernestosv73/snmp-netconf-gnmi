@@ -38,22 +38,11 @@ topology:
       mgmt-ipv4: 172.100.100.5
       image: docker.io/arthurk99/cisco-iol:17.15.01 
       startup-config: configs/config.partial  
-
-               
-    #gNMIc-snmp:
-      #kind: linux
-      #image: esanchezv/kali-python3:latest
-      #binds:
-        #- configs/snmp-netconf.sh:/root/snmp-netconf.sh
-        #- configs/test-netconf.py:/root/test-netconf.py
-        #- configs/gnmic-config.yml:/root/gnmic-config.yml
-      #exec:
-          #- mkdir /data
-          #- chmod +x /data
-          #- python3 -m pip config set global.break-system-packages true
-          #- chmod +x /root/snmp-netconf.sh
-          #- bash /root/snmp-netconf.sh    
-
+              
+    PC1:
+      kind: linux
+      image: docker.io/esanchezv/kaliipv6:latest
+    
     traffic-gen:
       kind: linux
       image: esanchezv/kali-iperf3:latest
@@ -88,7 +77,9 @@ topology:
     - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
       mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
-      mtu: 1500  
+      mtu: 1500
+    - endpoints: ["PC1:eth1", "srlswitch2:e1-4"]
+      mtu: 1500
     - endpoints: ["cisco-router:Ethernet0/2", "srlswitch2:e1-3"]
       mtu: 1500
     - endpoints: ["arista-router:eth2", "srlswitch2:e1-2"]
