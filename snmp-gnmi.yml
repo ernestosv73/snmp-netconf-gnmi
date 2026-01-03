@@ -12,6 +12,13 @@ topology:
       image: ghcr.io/nokia/srlinux:24.10.1
       type: ixrd3
       startup-config: configs/srlswitch.cfg
+
+    # Nokia SRL Linux Layer 2 Device
+    srlswitch2:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:24.10.1
+      type: ixrd3
+      startup-config: configs/srlswitch.cfg 
             
     # Nokia SRL Linux Router
     srlrouter:
@@ -65,6 +72,7 @@ topology:
          - configs/if-stats-snmp-v3.py:/root/if-stats-snmp-v3.py
          - configs/gnmic-config.yml:/root/gnmic-config.yml
       exec:
+         - ip -6 addr add 2001:db8:20::100/64 dev eth1
          - mkdir /data
          - chmod +x /data
          - python3 -m pip config set global.break-system-packages true
@@ -79,11 +87,11 @@ topology:
       mtu: 1500
     - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
       mtu: 1500
-    #- endpoints: ["gNMIc-snmp:eth1", "srlswitch:e1-4"]
-      #mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500  
-    - endpoints: ["alpine:eth1", "srlswitch:e1-6"]
+    - endpoints: ["cisco-router:Ethernet0/2", "srlswitch2:e1-3"]
+      mtu: 1500  
+    - endpoints: ["alpine:eth1", "srlswitch2:e1-5"]
       mtu: 1500  
       
     
