@@ -1,6 +1,10 @@
 enable
 configure
 ipv6 unicast-routing
+management api gnmi
+transport grpc default
+exit
+exit
 interface ethernet 1
 no switchport
 ipv6 enable
