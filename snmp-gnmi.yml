@@ -27,17 +27,17 @@ topology:
       type: ixrd3
       startup-config: configs/srlrouter.cfg
       
-    arista-router:
-      kind: arista_veos
-      mgmt-ipv4: 172.100.100.7
-      image: vrnetlab/arista_veos:4.35.1F
-      startup-config: configs/myconfig.txt      
+    #arista-router:
+      #kind: arista_veos
+      #mgmt-ipv4: 172.100.100.7
+      #image: vrnetlab/arista_veos:4.35.1F
+      #startup-config: configs/myconfig.txt      
 
-    cisco-router:
-      kind: cisco_iol
-      mgmt-ipv4: 172.100.100.5
-      image: docker.io/arthurk99/cisco-iol:17.15.01 
-      startup-config: configs/config.partial  
+    #cisco-router:
+      #kind: cisco_iol
+      #mgmt-ipv4: 172.100.100.5
+      #image: docker.io/arthurk99/cisco-iol:17.15.01 
+      #startup-config: configs/config.partial  
               
     PC1:
       kind: linux
@@ -72,18 +72,18 @@ topology:
   links:
     - endpoints: ["srlrouter:e1-1", "srlswitch:e1-1"]
       #mtu: 1500
-    - endpoints: ["arista-router:eth1", "srlswitch:e1-2"]
-      mtu: 1500
-    - endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
-      mtu: 1500
+    #- endpoints: ["arista-router:eth1", "srlswitch:e1-2"]
+      #mtu: 1500
+    #- endpoints: ["cisco-router:Ethernet0/1", "srlswitch:e1-3"]
+      #mtu: 1500
     - endpoints: ["traffic-gen:eth1", "srlswitch:e1-5"]
       mtu: 1500
     - endpoints: ["PC1:eth1", "srlswitch2:e1-4"]
       mtu: 1500
-    - endpoints: ["cisco-router:Ethernet0/2", "srlswitch2:e1-3"]
-      mtu: 1500
-    - endpoints: ["arista-router:eth2", "srlswitch2:e1-2"]
-      mtu: 1500  
+    #- endpoints: ["cisco-router:Ethernet0/2", "srlswitch2:e1-3"]
+      #mtu: 1500
+    #- endpoints: ["arista-router:eth2", "srlswitch2:e1-2"]
+      #mtu: 1500  
     - endpoints: ["srlrouter:e1-2", "srlswitch2:e1-1"]  
     - endpoints: ["alpine:eth1", "srlswitch2:e1-5"]
       mtu: 1500  
