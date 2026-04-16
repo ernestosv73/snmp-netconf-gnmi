@@ -1,13 +1,38 @@
-# Copyright 2020 Nokia
-# Licensed under the BSD 3-Clause License.
-# SPDX-License-Identifier: BSD-3-Clause
+# Fragmento para agregar a /etc/prometheus/prometheus.yml
+# dentro de la sección scrape_configs:
 
-global:
-  scrape_interval: 5s
-
-# metrics_path defaults to '/metrics'
-# scheme defaults to 'http'.
 scrape_configs:
-  - job_name: "gnmic"
+
+  - job_name: 'snmp_interfaces'
+    # Prometheus hace scrape al SNMP Exporter cada 30 segundos.
+    # El exporter consulta al dispositivo vía SNMPv2c y devuelve
+    # las métricas en formato Prometheus text exposition.
+    scrape_interval: 30s
+    scrape_timeout: 25s
+
     static_configs:
-      - targets: ["gNMIc:9273"]
+      - targets:
+          - '172.100.100.8'          # Dispositivo a monitorear vía SNMP
+        labels:
+          site: 'lab'              # Etiqueta opcional para identificar el sitio
+          study: 'snmp_vs_gnmi'    # Útil para el estudio comparativo
+
+    metrics_path: /snmp            # Endpoint del SNMP Exporter (no del dispositivo)
+
+    params:
+      module: [if_mib]             # Módulo definido en snmp.yml
+      auth:   [public_v2]          # Auth definida en snmp.yml
+
+    relabel_configs:
+      # Paso 1: copiar __address__ (172.100.100.8) al parámetro ?target=
+      # Así el exporter sabe a qué dispositivo hacer SNMP
+      - source_labels: [__address__]
+        target_label: __param_target
+
+      # Paso 2: copiar el target a una label visible en las métricas
+      - source_labels: [__param_target]
+        target_label: instance
+
+      # Paso 3: redirigir el scrape al SNMP Exporter, no al dispositivo
+      - target_label: __address__
+        replacement: 172.100.100.3:9116
