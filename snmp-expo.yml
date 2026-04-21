@@ -68,12 +68,7 @@ topology:
       kind: linux
       image: docker.io/esanchezv/kaliipv6:latest  
     
-    traffic-gen:
-      kind: linux
-      image: docker.io/esanchezv/kaliipv6:latest
-      exec:
-         - ip -6 addr add 2001:db8:10::100/64 dev eth1
-    
+        
     snmp-exporter:
       kind: linux
       image: prom/snmp-exporter:latest
