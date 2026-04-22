@@ -3,6 +3,11 @@
 
 scrape_configs:
 
+  - job_name: "cadvisor"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["172.110.110.1:8080"]    
+      
   - job_name: 'snmp_interfaces'
     # Prometheus hace scrape al SNMP Exporter cada 30 segundos.
     # El exporter consulta al dispositivo vía SNMPv2c y devuelve
