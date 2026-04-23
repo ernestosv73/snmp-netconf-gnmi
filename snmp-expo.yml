@@ -59,6 +59,11 @@ topology:
     PC1:
       kind: linux
       image: docker.io/esanchezv/kaliipv6:latest
+      binds:
+        - scripts/:/root
+      exec:
+        - chmod +x /root/install_py.sh
+        - sh /root/install_py.sh        
 
     PC2:
       kind: linux
